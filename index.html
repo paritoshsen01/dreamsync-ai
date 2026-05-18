@@ -4,138 +4,129 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DreamSync AI - Premium</title>
-  
-  <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
-  
-  <!-- GSAP & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  
-  <!-- Three.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  
-  <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   
-  <!-- Three.js Canvas Container -->
+  <div class="bg-gradient"></div>
   <div id="canvas-container"></div>
 
-  <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-content">
       <div class="logo">
-        <i data-lucide="brain-circuit" style="color: var(--color-accent-cyan);"></i>
-        <span>DreamSync AI</span>
+        <i data-lucide="triangle" style="color: var(--color-accent-cyan);"></i>
+        <span>DreamSync</span>
       </div>
-      <div class="nav-links">
-        <button class="btn-glow small">Login</button>
+      <div>
+        <button class="btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.85rem;">Access Hub</button>
       </div>
     </div>
   </nav>
 
-  <section class="hero content-wrapper gs-reveal">
+  <section class="hero content-wrapper">
     <div class="hero-content">
-      <div class="badge">V 2.0 NEURAL ENGINE ONLINE</div>
-      <h1 class="text-glow">Your Dreams Are <br><span class="text-gradient">No Longer Forgotten.</span></h1>
-      <p>Turn your sleeping imagination into living digital worlds. Speak your dreams and let our neural AI decode the subconscious.</p>
-      <div class="hero-buttons">
+      <div class="badge gs-hero">V 2.0 NEURAL ENGINE ONLINE</div>
+      <h1 class="gs-hero">Your Dreams Are <br><span class="text-gradient">No Longer Forgotten.</span></h1>
+      <p class="gs-hero">Turn your sleeping imagination into living digital worlds. Speak your dreams and let our neural AI decode the subconscious.</p>
+      <div class="hero-buttons gs-hero">
         <button class="btn-glow"><i data-lucide="mic"></i> AI Voice Input</button>
-        <button class="btn-outline">Decode My Dream <i data-lucide="arrow-right"></i></button>
+        <button class="btn-outline">Learn More <i data-lucide="arrow-right"></i></button>
       </div>
     </div>
   </section>
 
   <section class="content-wrapper">
     <div class="section-title gs-reveal">
-      <h2 class="text-glow text-gradient">Neural Dream Analyzer</h2>
+      <h2>Neural Dream Analyzer</h2>
       <p style="color: var(--color-text-muted);">Our neural engine detects hidden patterns and emotions in real-time.</p>
     </div>
     
     <div class="grid-2">
-      <div class="glass-panel gs-reveal gs-left" style="padding: 2.5rem;">
-        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
-          <i data-lucide="pen-tool" style="color: var(--color-accent-cyan);"></i>
-          <h3>Describe Your Dream</h3>
+      <div class="glass-panel gs-left" style="padding: 2.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.5rem;">
+          <div style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 8px;">
+            <i data-lucide="pen-tool" style="color: var(--color-text-main); width: 20px; height: 20px;"></i>
+          </div>
+          <h3 style="font-size: 1.25rem;">Describe Your Dream</h3>
         </div>
         <textarea placeholder="I was falling through a sky made of liquid gold, and the stars were singing..."></textarea>
-        <button class="btn-glow" style="width: 100%; justify-content: center;" onclick="startAnalysis()">
+        <button class="btn-outline" style="width: 100%; border-color: rgba(0, 240, 255, 0.4); color: var(--color-accent-cyan);" onclick="startAnalysis()">
           <i data-lucide="cpu"></i> Initialize Analysis
         </button>
       </div>
 
-      <div class="glass-panel gs-reveal gs-right" style="padding: 2.5rem;">
-        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 2rem;">
-          <i data-lucide="activity" style="color: var(--color-accent-cyan);"></i>
-          <h3>Real-Time Metrics</h3>
+      <div class="glass-panel gs-right" style="padding: 2.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem;">
+          <div style="background: rgba(255,255,255,0.05); padding: 0.5rem; border-radius: 8px;">
+            <i data-lucide="activity" style="color: var(--color-text-main); width: 20px; height: 20px;"></i>
+          </div>
+          <h3 style="font-size: 1.25rem;">Real-Time Metrics</h3>
         </div>
         
         <div class="metric-row">
           <div class="metric-header">
-            <span>Emotional Intensity</span>
-            <span style="color: var(--color-accent-cyan);" class="metric-val" id="val1">0%</span>
+            <span style="color: var(--color-text-muted);">Emotional Intensity</span>
+            <span style="color: var(--color-accent-cyan); font-weight: 600;" id="val1">0%</span>
           </div>
           <div class="progress-bar">
-            <div class="progress-fill" id="bar1" style="background: var(--color-accent-cyan);"></div>
+            <div class="progress-fill" id="bar1" style="background: var(--color-accent-cyan); box-shadow: 0 0 10px rgba(0,240,255,0.5);"></div>
           </div>
         </div>
 
         <div class="metric-row">
           <div class="metric-header">
-            <span>Fear / Anxiety Level</span>
-            <span style="color: var(--color-accent-crimson);" class="metric-val" id="val2">0%</span>
+            <span style="color: var(--color-text-muted);">Anxiety Level</span>
+            <span style="color: var(--color-accent-crimson); font-weight: 600;" id="val2">0%</span>
           </div>
           <div class="progress-bar">
-            <div class="progress-fill" id="bar2" style="background: var(--color-accent-crimson);"></div>
+            <div class="progress-fill" id="bar2" style="background: var(--color-accent-crimson); box-shadow: 0 0 10px rgba(255,42,95,0.5);"></div>
           </div>
         </div>
 
         <div class="metric-row">
           <div class="metric-header">
-            <span>Lucidity Score</span>
-            <span style="color: var(--color-accent-purple);" class="metric-val" id="val3">0%</span>
+            <span style="color: var(--color-text-muted);">Lucidity Score</span>
+            <span style="color: var(--color-accent-purple); font-weight: 600;" id="val3">0%</span>
           </div>
           <div class="progress-bar">
-            <div class="progress-fill" id="bar3" style="background: var(--color-accent-purple);"></div>
+            <div class="progress-fill" id="bar3" style="background: var(--color-accent-purple); box-shadow: 0 0 10px rgba(157,0,255,0.5);"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Swiper Carousel Section -->
-  <section class="content-wrapper gs-reveal">
+  <section class="content-wrapper gs-reveal" style="padding-top: 4rem;">
     <div class="section-title">
-      <h2 class="text-glow text-gradient">Dreamscapes</h2>
+      <h2>Dreamscapes</h2>
       <p style="color: var(--color-text-muted);">Swipe through rendered environments from other users.</p>
     </div>
     
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide glass-panel">
+        <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');">
           <div class="slide-content">
-            <i data-lucide="mountain" style="width: 48px; height: 48px; color: var(--color-accent-cyan); margin-bottom: 1rem;"></i>
+            <i data-lucide="mountain" style="color: var(--color-accent-cyan); margin-bottom: 0.5rem;"></i>
             <h3>The Obsidian Peaks</h3>
             <p>A recurring lucidity environment.</p>
           </div>
         </div>
-        <div class="swiper-slide glass-panel">
+        <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2670&auto=format&fit=crop');">
           <div class="slide-content">
-            <i data-lucide="waves" style="width: 48px; height: 48px; color: var(--color-accent-purple); margin-bottom: 1rem;"></i>
+            <i data-lucide="waves" style="color: var(--color-accent-purple); margin-bottom: 0.5rem;"></i>
             <h3>Liquid Gold Oceans</h3>
             <p>High emotional intensity rendering.</p>
           </div>
         </div>
-        <div class="swiper-slide glass-panel">
+        <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2727&auto=format&fit=crop');">
           <div class="slide-content">
-            <i data-lucide="moon" style="width: 48px; height: 48px; color: var(--color-accent-crimson); margin-bottom: 1rem;"></i>
+            <i data-lucide="moon" style="color: var(--color-accent-crimson); margin-bottom: 0.5rem;"></i>
             <h3>Crimson Skies</h3>
             <p>Anxiety-driven nightmare conversion.</p>
           </div>
@@ -145,27 +136,29 @@
     </div>
   </section>
 
-  <footer style="background: var(--color-bg-glass); border-top: 1px solid var(--color-border-glass); margin-top: 4rem;">
-    <div class="content-wrapper gs-reveal" style="display: flex; justify-content: space-between; align-items: center; padding: 3rem 2rem;">
-      <div style="display: flex; align-items: center; gap: 0.5rem;">
-        <i data-lucide="brain-circuit" style="color: var(--color-accent-cyan);"></i>
-        <h3 class="text-glow text-gradient">DreamSync AI</h3>
+  <footer>
+    <div class="content-wrapper gs-reveal" style="padding: 3rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+      <div style="display: flex; align-items: center; gap: 0.5rem; opacity: 0.8;">
+        <i data-lucide="triangle" style="color: var(--color-accent-cyan); width: 18px;"></i>
+        <h3 style="font-size: 1.1rem;">DreamSync</h3>
       </div>
-      <p style="color: var(--color-text-muted); font-size: 0.9rem;">© 2035 DreamSync AI Inc. All rights reserved.</p>
+      <p style="color: var(--color-text-muted); font-size: 0.85rem;">© 2035 DreamSync AI Inc. All rights reserved.</p>
     </div>
   </footer>
 
   <div class="luna-orb" onclick="toggleLuna()">
-    <i data-lucide="sparkles" style="color: #000;"></i>
+    <i data-lucide="sparkles" style="color: #000; width: 24px; height: 24px;"></i>
   </div>
   
   <div class="glass-panel luna-chat" id="luna-panel">
-    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border-glass); padding-bottom: 0.5rem;">
-      <i data-lucide="bot" style="color: var(--color-accent-cyan);"></i>
-      <h4>LUNA AI</h4>
+    <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+      <div style="background: rgba(255,255,255,0.1); padding: 0.4rem; border-radius: 50%;">
+        <i data-lucide="bot" style="color: var(--color-text-main); width: 18px; height: 18px;"></i>
+      </div>
+      <h4 style="font-size: 1rem;">LUNA AI</h4>
     </div>
-    <p style="font-size: 0.9rem; margin-bottom: 1rem;">Hello. I detected an elevated REM cycle last night. Would you like me to analyze the fragmented symbols?</p>
-    <button class="btn-glow" style="width: 100%; font-size: 0.8rem; padding: 0.5rem;" onclick="toggleLuna()">Close Connection</button>
+    <p style="font-size: 0.9rem; margin-bottom: 1.5rem; color: var(--color-text-muted); line-height: 1.5;">Hello. I detected an elevated REM cycle last night. Would you like me to analyze the fragmented symbols?</p>
+    <button class="btn-outline" style="width: 100%; padding: 0.6rem; font-size: 0.85rem;" onclick="toggleLuna()">Close Connection</button>
   </div>
 
   <script src="script.js"></script>
